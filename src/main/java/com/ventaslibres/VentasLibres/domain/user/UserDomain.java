@@ -1,19 +1,39 @@
 package com.ventaslibres.VentasLibres.domain.user;
 
 
+import javax.persistence.*;
 
+@Entity
+@Table()
 public class UserDomain {
 
-    String name;
-    String lastName;
-    String numberPhone;
-    String dateBritDay;
+    @Id
+    @Column()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String userId;
+    @Column(length = 20)
+    private String name;
+    @Column(length = 20)
+    private String lastName;
+    @Column(length = 20)
+    private String numberPhone;
+    @Column(length = 20)
+    private String dateBritDay;
 
-    public UserDomain(String name, String lastName, String numberPhone, String dateBritDay) {
+    public UserDomain(String userId, String name, String lastName, String numberPhone, String dateBritDay) {
+        this.userId = userId;
         this.name = name;
         this.lastName = lastName;
         this.numberPhone = numberPhone;
         this.dateBritDay = dateBritDay;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public UserDomain() {
